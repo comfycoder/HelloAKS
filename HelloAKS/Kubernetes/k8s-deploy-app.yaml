@@ -1,0 +1,56 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-aks-demo
+  labels:
+    app: hello-aks-demo
+spec:
+  #replicas: 1
+  selector:
+    matchLabels:
+      app: hello-aks-demo
+  template:
+    metadata:
+      labels:
+        app: hello-aks-demo
+    spec:
+      containers:
+      - name: hello-aks-demo
+        image: acrcnea2maddotnet.azurecr.io/helloaks:v1
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-aks-demo
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: hello-aks-demo
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hello-aks-demo-hpa
+  labels:
+    app: hello-aks-demo
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hello-aks-demo
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80

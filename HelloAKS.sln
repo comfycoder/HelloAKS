@@ -3,7 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloAKS", "HelloAKS\HelloAKS.csproj", "{1CDF5BC5-4F52-4E5D-BCA4-5D095A7A0462}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloAKS", "HelloAKS\HelloAKS.csproj", "{1CDF5BC5-4F52-4E5D-BCA4-5D095A7A0462}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{88AC0B5D-1694-4C5F-A3C5-98C0E9807D17}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
